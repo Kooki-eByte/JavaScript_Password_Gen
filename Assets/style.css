@@ -120,15 +120,18 @@ button[disabled] {
 }
 
 footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   text-align: center;
   color: hsl(206, 17%, 28%);
+  background-color: white;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px 0px;
 }
 
 #footerTxt {
   background-color: white;
-  padding-top: 20px;
-  border-top: grey;
 }
 
 @media (max-width: 690px) {

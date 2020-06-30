@@ -15,6 +15,6 @@ Javascript Example ..
 
 ## Sources used to help
 
-- [Unicode map](https://www.online-toolz.com/tools/character-map.php)
-- [String object Method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode)
-- [Object Method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
+- Finding lower, upper, numbers, and symbols[Unicode map](https://www.online-toolz.com/tools/character-map.php)
+- Finding the string methos used for the unicode[String object Method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode)
+- Finding the key in our object to use a new value and use each function to get a more random password [Object Method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
