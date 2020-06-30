@@ -5,7 +5,8 @@ A web application that generates a random password based on user-selected criter
 ## Comment Rules
 
 This is shown in HTML , CSS, and JS files...
-Javascript Example ..
+
+**Javascript Example ..**
 
 ```javascript
 // ! Alerts or Warnings
@@ -15,6 +16,6 @@ Javascript Example ..
 
 ## Sources used to help
 
-- Finding lower, upper, numbers, and symbols[Unicode map](https://www.online-toolz.com/tools/character-map.php)
+- Finding lower, upper, numbers, and symbols [Unicode map](https://www.online-toolz.com/tools/character-map.php)
 - Finding the string methos used for the unicode[String object Method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode)
 - Finding the key in our object to use a new value and use each function to get a more random password [Object Method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
