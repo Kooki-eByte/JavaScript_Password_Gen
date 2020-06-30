@@ -45,26 +45,30 @@ function getRanSpec() {
 function generatePassword(len, lower, upper, num, speChar) {
   // String to hold our password
   let pw = "";
+
+  const typeCounter = lower + upper + num + speChar;
   // Filter out true or false types
   const typeArr = [{ lower }, { upper }, { num }, { speChar }].filter(
     (item) => Object.values(item)[0]
   );
   // FOR loop over the len , call gen function for each type
-  for (let i = 0; i < len; i++) {
+  for (let i = 0; i < len; i += typeCounter) {
     typeArr.forEach((type) => {
-      const funcName = Object.keys(type[0]);
+      let funcName = Object.keys(type)[0];
 
       pw += randomFunc[funcName]();
     });
   }
   // add final pw to pw var and return it
-  return pw;
+  const finalPw = pw.slice(0, len);
+
+  return finalPw;
 }
 
 // Next step that will help set up our password and output it
 function writePassword() {
   // ! Length 8 - 128
-  let len;
+  let len = 0;
   do {
     len = prompt(
       "How many characters would you like to have in your password? (Between 8 - 128 characters)"
@@ -72,38 +76,34 @@ function writePassword() {
     len = parseInt(len);
   } while (len < 8 || len > 128);
 
-  if (len >= 8 || len <= 128) {
-    console.log("This is the len: " + len);
+  console.log("This is the len: " + len);
 
-    // ! Ask for lowercase, uppercase, numeric, and special characters
+  // ! Ask for lowercase, uppercase, numeric, and special characters
 
-    alert("Please select AT LEAST one character type");
+  alert("Please select AT LEAST one character type");
 
-    let isLowerCase = confirm("do you want lowercase in your password?");
-    console.log(isLowerCase);
+  let isLowerCase = confirm("do you want lowercase in your password?");
+  console.log(isLowerCase);
 
-    let isUpperCase = confirm("do you want uppercase in your password?");
-    console.log(isUpperCase);
+  let isUpperCase = confirm("do you want uppercase in your password?");
+  console.log(isUpperCase);
 
-    let isNumeric = confirm("do you want numbers in your password?");
-    console.log(isNumeric);
+  let isNumeric = confirm("do you want numbers in your password?");
+  console.log(isNumeric);
 
-    let isSpecialCha = confirm(
-      "do you want special characters in your password?"
-    );
-    console.log(isSpecialCha);
-  } else {
-    alert("Invalid input");
-  }
+  let isSpecialCha = confirm(
+    "do you want special characters in your password?"
+  );
+  console.log(isSpecialCha);
 
-  var password = generatePassword(
+  let password = generatePassword(
     len,
     isLowerCase,
     isUpperCase,
     isNumeric,
     isSpecialCha
   );
-  var passwordText = document.querySelector("#password");
+  let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 }
