@@ -17,6 +17,13 @@
 // ! Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+const randomFunc = {
+  lower: getRanLower,
+  upper: getRanUpper,
+  num: getRanNum,
+  speChar: getRanSpec,
+};
+
 // ? Write password to the #password input
 
 function getRanLower() {
@@ -31,11 +38,31 @@ function getRanNum() {
   return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 }
 
-function getRanNum() {
+function getRanSpec() {
   return String.fromCharCode(Math.floor(Math.random() * 15) + 33);
 }
 
-function generatePassword() {
+function generatePassword(len, lower, upper, num, speChar) {
+  // String to hold our password
+  let pw = "";
+  // Filter out true or false types
+  const typeArr = [{ lower }, { upper }, { num }, { speChar }].filter(
+    (item) => Object.values(item)[0]
+  );
+  // FOR loop over the len , call gen function for each type
+  for (let i = 0; i < len; i++) {
+    typeArr.forEach((type) => {
+      const funcName = Object.keys(type[0]);
+
+      pw += randomFunc[funcName]();
+    });
+  }
+  // add final pw to pw var and return it
+  return pw;
+}
+
+// Next step that will help set up our password and output it
+function writePassword() {
   // ! Length 8 - 128
   let len;
   do {
@@ -65,27 +92,21 @@ function generatePassword() {
       "do you want special characters in your password?"
     );
     console.log(isSpecialCha);
-
-    // ! At least one character type should be selected for whatever gets accepted
-    
-
-    for (let i = 0; i <= len; i++) {
-
-    }
-    
-
-    // ! return password to this function
   } else {
     alert("Invalid input");
   }
-}
 
-function writePassword() {
-  var password = generatePassword();
+  var password = generatePassword(
+    len,
+    isLowerCase,
+    isUpperCase,
+    isNumeric,
+    isSpecialCha
+  );
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 }
 
-// ? Add event listener to generate button
+// Start to Generate password
 generateBtn.addEventListener("click", writePassword);
