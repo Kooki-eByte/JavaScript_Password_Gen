@@ -43,15 +43,20 @@ function getRanSpec() {
 }
 
 function generatePassword(len, lower, upper, num, speChar) {
-  // String to hold our password
+  // * String to hold our password
   let pw = "";
 
   const typeCounter = lower + upper + num + speChar;
-  // Filter out true or false types
+  // * Filter out true or false types
   const typeArr = [{ lower }, { upper }, { num }, { speChar }].filter(
     (item) => Object.values(item)[0]
   );
-  // FOR loop over the len , call gen function for each type
+
+  // ! This is incase all types are set to fasle, We can return a emtpy string becasue we need at least one type to be chosen.
+  if (typeCounter === 0) {
+    return "";
+  }
+  // * FOR loop over the len , call gen function for each type
   for (let i = 0; i < len; i += typeCounter) {
     typeArr.forEach((type) => {
       let funcName = Object.keys(type)[0];
@@ -59,16 +64,21 @@ function generatePassword(len, lower, upper, num, speChar) {
       pw += randomFunc[funcName]();
     });
   }
-  // add final pw to pw var and return it
+  // * add final pw to pw var and return it
   const finalPw = pw.slice(0, len);
 
   return finalPw;
 }
 
-// Next step that will help set up our password and output it
+// * Next step that will help set up our password and output it
 function writePassword() {
   // ! Length 8 - 128
   let len = 0;
+  let isLowerCase;
+  let isUpperCase;
+  let isNumeric;
+  let isSpecialCha;
+
   do {
     len = prompt(
       "How many characters would you like to have in your password? (Between 8 - 128 characters)"
@@ -82,18 +92,16 @@ function writePassword() {
 
   alert("Please select AT LEAST one character type");
 
-  let isLowerCase = confirm("do you want lowercase in your password?");
+  isLowerCase = confirm("do you want lowercase in your password?");
   console.log(isLowerCase);
 
-  let isUpperCase = confirm("do you want uppercase in your password?");
+  isUpperCase = confirm("do you want uppercase in your password?");
   console.log(isUpperCase);
 
-  let isNumeric = confirm("do you want numbers in your password?");
+  isNumeric = confirm("do you want numbers in your password?");
   console.log(isNumeric);
 
-  let isSpecialCha = confirm(
-    "do you want special characters in your password?"
-  );
+  isSpecialCha = confirm("do you want special characters in your password?");
   console.log(isSpecialCha);
 
   let password = generatePassword(
