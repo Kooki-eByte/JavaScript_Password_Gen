@@ -61,10 +61,11 @@ function generatePassword(len, lower, upper, num, speChar) {
     typeArr.forEach((type) => {
       let funcName = Object.keys(type)[0];
 
+      // * Adding a new character to the
       pw += randomFunc[funcName]();
     });
   }
-  // * add final pw to pw var and return it
+  // * add final pw to pw var and return it, slice Method allows us to only grab the right length of password in case more is made.
   const finalPw = pw.slice(0, len);
 
   return finalPw;
@@ -72,13 +73,13 @@ function generatePassword(len, lower, upper, num, speChar) {
 
 // * Next step that will help set up our password and output it
 function writePassword() {
-  // ! Length 8 - 128
   let len = 0;
   let isLowerCase;
   let isUpperCase;
   let isNumeric;
   let isSpecialCha;
 
+  // * Length 8 - 128
   do {
     len = prompt(
       "How many characters would you like to have in your password? (Between 8 - 128 characters)"
@@ -88,7 +89,7 @@ function writePassword() {
 
   console.log("This is the len: " + len);
 
-  // ! Ask for lowercase, uppercase, numeric, and special characters
+  // * Ask for lowercase, uppercase, numeric, and special characters
 
   alert("Please select AT LEAST one character type");
 
@@ -116,5 +117,5 @@ function writePassword() {
   passwordText.value = password;
 }
 
-// Start to Generate password
+// * Start to Generate password
 generateBtn.addEventListener("click", writePassword);
