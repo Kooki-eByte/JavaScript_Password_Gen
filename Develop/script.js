@@ -40,16 +40,16 @@ function generatePassword(len, lower, upper, num, speChar) {
     (item) => Object.values(item)[0]
   );
 
-  // ! This is incase all types are set to fasle, We can return a emtpy string becasue we need at least one type to be chosen.
+  // ! This is incase all types are set to fasle, We can return a string because we need at least one type to be chosen.
   if (typeCounter === 0) {
-    return "";
+    return "No characters added";
   }
 
   // * FOR loop over the len , call gen function for each type
   for (let i = 0; i < len; i += typeCounter) {
+    // * for each property in the obj do this function..
     typeArr.forEach((type) => {
       let funcName = Object.keys(type)[0];
-
       // * Adding a new character to the
       pw += randomFunc[funcName]();
     });
